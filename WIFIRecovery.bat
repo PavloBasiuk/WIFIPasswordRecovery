@@ -15,6 +15,7 @@ setlocal EnableDelayedExpansion
 
     goto :eof
 
+	
 
 ::
 :: Get all network profiles (comma separated) into the result result-variable
@@ -30,13 +31,12 @@ setlocal EnableDelayedExpansion
 				`netsh wlan show profile name^="!val!" key^=clear ^| findstr /C:"Key Content"`) do (
 		set keys=%%k
 	
-		echo WiFi Name: [!val!] Password: [!keys!]
+		echo WiFi Name: [!val!] Password: [!keys:~1!]
 		)
     )
     (
         endlocal
-		echo "Test"
-        set %1="test"
+        
     )
 
     goto :eof
